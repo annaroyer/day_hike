@@ -35,6 +35,12 @@ context 'As a visitor' do
 
         expect(page).to have_content("Average Hiking Distance: #{3.67}")
       end
+
+      scenario 'I see the longest hiking distance' do
+        visit trip_path(@trip)
+
+        expect(page).to have_content("Longest Hiking Distance: #{5}")
+      end
     end
   end
 end
@@ -46,7 +52,7 @@ end
 # ```
 # As a visitor,
 # when I visit a trip show,
-# I see the longest hiking distance
+
 # ```
 #
 # ```
