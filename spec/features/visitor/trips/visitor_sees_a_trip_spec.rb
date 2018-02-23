@@ -50,15 +50,3 @@ context 'As a visitor' do
     end
   end
 end
-
-
-
-
-# As a visitor,
-# when I visit a trip show,
-# ```
-#
-# ```
-# As a visitor,
-# when I visit a trip show,
-# I a list of names for each hike
