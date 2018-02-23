@@ -5,7 +5,12 @@ context 'As a visitor' do
     describe 'and I click a link to a trip show,' do
       before(:each) do
         @trip = create(:trip)
-        @trail_trips = create_list(:trail_trip, 3, trip: @trip)
+        @trail_1 = create(:trail, length: 5)
+        @trail_2 = create(:trail, length: 2)
+        @trail_3 = create(:trail, length: 4)
+        create(:trail_trip, trail: @trail_1, trip: @trip)
+        create(:trail_trip, trail: @trail_2, trip: @trip)
+        create(:trail_trip, trail: @trail_3, trip: @trip)
       end
       scenario 'I see a list of trails included in the trip' do
         visit trips_path
@@ -18,18 +23,16 @@ context 'As a visitor' do
           expect(page).to have_content(trail.length)
         end
       end
+      scenario 'I see the planned total hiking distance' do
+        visit trip_path(@trip)
+
+        expect(page).to have_content("Total Hiking Distance: #{11}")
+      end
     end
   end
 end
 
-#
-#
-# As a visitor,
-# when I visit a trip show,
-# I see the planned total hiking distance
-# ```
-#
-# ```
+
 # As a visitor,
 # when I visit a trip show,
 # I see the average hiking distance
