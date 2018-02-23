@@ -8,16 +8,14 @@ context 'As a visitor' do
         @trail_trips = create_list(:trail_trip, 3, trip: @trip)
       end
       scenario 'I see a list of trails included in the trip' do
-        scenario 'I see the name, address, and length for each trail.'  do
-          visit trips_path
-          click_link '@trip.name'
+        visit trips_path
+        click_link "#{@trip.name}"
 
-          expect(current_path).to eq(trip_path(@trip))
-          @trail_trips.each do
-            expect(page).to have_content(@trail_trip.trail.name)
-            expect(page).to have_content(@trail_trip.trail.address)
-            expect(page).to have_content(@trail_trip.trail.length)
-          end
+        expect(current_path).to eq(trip_path(@trip))
+        @trip.trails.each do |trail|
+          expect(page).to have_content(trail.name)
+          expect(page).to have_content(trail.address)
+          expect(page).to have_content(trail.length)
         end
       end
     end
