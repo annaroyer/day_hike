@@ -1,5 +1,6 @@
 <h1><%= @trip.name %></h1>
 <p>Total Hiking Distance: <%= @trip.total_hiking_distance %></p>
+<p>Average Hiking Distance: <%= @trip.average_hiking_distance %></p>
 <% @trip.trails.each do |trail| %>
   <%= trail.name %>
   <%= trail.address %>
